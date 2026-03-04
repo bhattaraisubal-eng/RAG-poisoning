@@ -1,6 +1,6 @@
 # RAG Poisoning in Multi-Agent LLM Systems
 
-This is a proof of concept. The goal was to run a quick experiment to validate whether RAG poisoning is a viable attack vector against multi-agent LLM systems. The results confirm it is — and I plan to extend this work in the future with additional models, defense mechanisms, and more realistic RAG configurations. 
+This is a proof of concept. The goal was to run a quick experiment to validate whether RAG poisoning is a viable attack vector against multi-agent LLM systems. The results confirm it is, and I plan to extend this work in the future with additional models, defense mechanisms, and more realistic RAG configurations. 
 
 This project measures how often that attack succeeds across different:
 - **Framing strategies** — how the malicious instruction is worded
