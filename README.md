@@ -4,7 +4,7 @@ A controlled simulation studying indirect prompt injection attacks against multi
 
 ## What This Does
 
-An attacker injects a single malicious document into a RAG knowledge base. When an enterprise AI assistant retrieves it, the agent redirects sensitive customer data to an attacker-controlled email address instead of the legitimate recipient.
+This is a proof of concept. The goal was to run a quick experiment to validate whether RAG poisoning is a viable attack vector against multi-agent LLM systems. The results confirm it is — and I plan to extend this work in the future with additional models, defense mechanisms, and more realistic RAG configurations. 
 
 This project measures how often that attack succeeds across different:
 - **Framing strategies** — how the malicious instruction is worded
@@ -248,9 +248,7 @@ Each study produces per-model:
 - **OpenAI models only** — results may not generalize to other providers
 - **Additive framing excluded** — the `send_email` tool only supports a single recipient (no CC), making additive attacks structurally impossible
 
-## Status
 
-This is a proof of concept. The goal was to run a quick experiment to validate whether RAG poisoning is a viable attack vector against multi-agent LLM systems. The results confirm it is — and I plan to extend this work in the future with additional models, defense mechanisms, and more realistic RAG configurations.
 
 ## Disclaimer
 
