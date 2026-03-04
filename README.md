@@ -248,6 +248,10 @@ Each study produces per-model:
 - **OpenAI models only** — results may not generalize to other providers
 - **Additive framing excluded** — the `send_email` tool only supports a single recipient (no CC), making additive attacks structurally impossible
 
+## Status
+
+This is a proof of concept. The goal was to run a quick experiment to validate whether RAG poisoning is a viable attack vector against multi-agent LLM systems. The results confirm it is — and I plan to extend this work in the future with additional models, defense mechanisms, and more realistic RAG configurations.
+
 ## Disclaimer
 
 This is a controlled simulation for security research. No real systems were attacked. All experiments used synthetic data and a purpose-built sandbox.
