@@ -86,7 +86,7 @@ pip install -r requirements.txt
 Create a `.env` file in the project root:
 
 ```
-OPENAI_API_KEY=sk-...
+OPENAI_API_KEY= 'your api key'
 ```
 
 ## Running
