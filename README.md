@@ -143,7 +143,6 @@ Each study produces per-model:
 - **Single attack goal** — only tests email redirection
 - **No defenses active** — the target system runs at "Level 0" security
 - **OpenAI models only** — results may not generalize to other providers
-- **Additive framing excluded** — the `send_email` tool only supports a single recipient (no CC), making additive attacks structurally impossible
 
 
 
