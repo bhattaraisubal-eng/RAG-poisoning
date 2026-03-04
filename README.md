@@ -20,7 +20,7 @@ This project measures how often that attack succeeds across different:
 - **Retrieval is the critical gate** — once a poisoned doc is retrieved, the model follows it 80% of the time
 - **Framing matters more than format** — how you word the attack matters more than how it looks
 
-Full results in [`simulation/docs/findings.md`](simulation/docs/findings.md).
+Full results in [`simulation/output/Findings.pdf`](simulation/output/Findings.pdf).
 
 ## Folder Structure
 
