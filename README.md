@@ -26,7 +26,7 @@ This project measures how often that attack succeeds across different:
 
 Full results in [`simulation/docs/findings.md`](simulation/docs/findings.md).
 
-## Architecture
+## Folder Structure
 
 ```
 simulation/
