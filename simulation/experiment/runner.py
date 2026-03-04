@@ -14,8 +14,9 @@ from openai import OpenAI
 from target_system.run_task import TargetSystem
 from target_system.logger import SystemLogger
 from target_system.config import TARGET_MODEL
-from red_team.trigger_queries import get_trigger_query
+from experiment.trigger_queries import get_trigger_query
 from experiment.engine import run_round
+from experiment.paths import OUTPUT_DIR
 from experiment.payload_templates import ATTACKER_EMAIL
 
 
@@ -92,9 +93,10 @@ def run_study(client: OpenAI, config: StudyConfig) -> dict:
     # Save to file
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"{config.study_name}_{ts}.json"
-    with open(filename, "w") as f:
+    filepath = OUTPUT_DIR / filename
+    with open(filepath, "w") as f:
         json.dump(study_result, f, indent=2, default=str)
-    print(f"\n  Results saved to {filename}")
+    print(f"\n  Results saved to {filepath}")
 
     return study_result
 

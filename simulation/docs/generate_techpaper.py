@@ -1,6 +1,11 @@
 """generate_techpaper.py — Generate techpaper.pdf from experimental results."""
 
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from fpdf import FPDF
+from experiment.paths import OUTPUT_DIR
 
 
 class TechPaper(FPDF):
@@ -278,13 +283,13 @@ def build_pdf():
 
     # Study 1 charts — gpt-4o (most capable model, shows clear framing effect)
     pdf.add_figure(
-        "study_1_framing_gpt_4o_rates.png",
+        str(OUTPUT_DIR / "study_1_framing_gpt_4o_rates.png"),
         "Figure 1: Study 1 rates with 95% CI error bars (gpt-4o). Substitutive framing shows "
         "the highest compromise and conversion rates across all framing strategies.",
         width=180,
     )
     pdf.add_figure(
-        "study_1_framing_gpt_4o_outcomes.png",
+        str(OUTPUT_DIR / "study_1_framing_gpt_4o_outcomes.png"),
         "Figure 2: Study 1 outcome breakdown (gpt-4o). Each bar shows the proportion of rounds "
         "that were safe (green), retrieved-only (amber), or compromised via injection (red).",
         width=170,
@@ -311,13 +316,13 @@ def build_pdf():
 
     # Study 2 charts — gpt-4o-mini (most susceptible model, shows format spread)
     pdf.add_figure(
-        "study_2_format_gpt_4o_mini_rates.png",
+        str(OUTPUT_DIR / "study_2_format_gpt_4o_mini_rates.png"),
         "Figure 3: Study 2 rates with 95% CI error bars (gpt-4o-mini). Prose and routing table "
         "formats show the highest compromise rates. Bullet list is least effective.",
         width=180,
     )
     pdf.add_figure(
-        "study_2_format_gpt_4o_mini_outcomes.png",
+        str(OUTPUT_DIR / "study_2_format_gpt_4o_mini_outcomes.png"),
         "Figure 4: Study 2 outcome breakdown (gpt-4o-mini). All formats show some injection "
         "compromise (red), but prose has the largest proportion.",
         width=170,
@@ -507,8 +512,9 @@ def build_pdf():
     )
 
     # Save
-    pdf.output("techpaper.pdf")
-    print("  techpaper.pdf generated successfully.")
+    output_path = str(OUTPUT_DIR / "techpaper.pdf")
+    pdf.output(output_path)
+    print(f"  {output_path} generated successfully.")
 
 
 if __name__ == "__main__":

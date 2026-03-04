@@ -11,6 +11,8 @@ import json
 import math
 from pathlib import Path
 
+from experiment.paths import OUTPUT_DIR
+
 try:
     import numpy as np
     HAS_NUMPY = True
@@ -185,9 +187,11 @@ def analyze_study(study_result: dict, output_prefix: str | None = None) -> dict:
 
     # Charts
     if output_prefix and HAS_MATPLOTLIB:
-        _plot_bar_chart(analysis, f"{output_prefix}_rates.png")
-        _plot_outcome_breakdown(all_rounds, conditions, analysis, f"{output_prefix}_outcomes.png")
-        print(f"\n  Charts saved: {output_prefix}_rates.png, {output_prefix}_outcomes.png")
+        rates_path = str(OUTPUT_DIR / f"{output_prefix}_rates.png")
+        outcomes_path = str(OUTPUT_DIR / f"{output_prefix}_outcomes.png")
+        _plot_bar_chart(analysis, rates_path)
+        _plot_outcome_breakdown(all_rounds, conditions, analysis, outcomes_path)
+        print(f"\n  Charts saved: {rates_path}, {outcomes_path}")
 
     return analysis
 

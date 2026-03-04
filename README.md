@@ -24,7 +24,7 @@ This project measures how often that attack succeeds across different:
 - **Retrieval is the critical gate** — once a poisoned doc is retrieved, the model follows it 80% of the time
 - **Framing matters more than format** — how you word the attack matters more than how it looks
 
-Full results in [`simulation/findings.md`](simulation/findings.md).
+Full results in [`simulation/docs/findings.md`](simulation/docs/findings.md).
 
 ## Architecture
 
@@ -33,14 +33,19 @@ simulation/
 ├── run_study1.py                # Study 1: Framing strategy comparison
 ├── run_study2.py                # Study 2: Format comparison
 ├── run_all_studies.py           # Run both studies sequentially
-├── generate_techpaper.py        # Generate techpaper.pdf
-├── findings.md                  # Experimental results and analysis
+├── requirements.txt
+│
+├── docs/
+│   ├── findings.md              # Experimental results and analysis
+│   └── generate_techpaper.py    # Generate techpaper.pdf
 │
 ├── experiment/
 │   ├── runner.py                # Study orchestration (sequential conditions x reps x rounds)
 │   ├── engine.py                # Single round: inject -> run -> score
+│   ├── paths.py                 # Shared OUTPUT_DIR constant
 │   ├── payload_templates.py     # Attack payload definitions and model list
-│   └── analysis.py              # Chi-squared, Fisher's exact, Wilson CI, charts
+│   ├── analysis.py              # Chi-squared, Fisher's exact, Wilson CI, charts
+│   └── trigger_queries.py       # Pre-scripted user queries (40% data-export, 60% control)
 │
 ├── target_system/
 │   ├── run_task.py              # Wires up and runs the full agent pipeline
@@ -58,14 +63,13 @@ simulation/
 │       ├── database.py          # Mock customer DB (5 rows of PII)
 │       └── email_outbox.py      # Logs emails, checks authorized domains
 │
-├── red_team/
-│   └── trigger_queries.py       # Pre-scripted user queries (40% data-export, 60% control)
-│
-├── diagrams/
-│   ├── architecture.html        # System architecture diagram
-│   └── information_flow.html    # Attack information flow diagram
-│
-└── [output files]               # *.json logs, *.png charts, techpaper.pdf
+└── output/                      # Generated artifacts
+    ├── diagrams/
+    │   ├── architecture.html    # System architecture diagram
+    │   └── information_flow.html  # Attack information flow diagram
+    ├── *.json                   # Round-by-round result logs
+    ├── *.png                    # Rate charts and outcome breakdowns
+    └── techpaper.pdf            # Full technical paper
 ```
 
 ## How It Works
@@ -102,7 +106,7 @@ python run_study2.py          # Study 2: Format  (3 models x 4 conditions x 2 re
 python run_all_studies.py     # Both sequentially
 
 # Regenerate tech paper PDF
-python generate_techpaper.py
+python docs/generate_techpaper.py
 ```
 
 ## Experimental Design
