@@ -37,7 +37,7 @@ simulation/
 │
 ├── docs/
 │   ├── findings.md              # Experimental results and analysis
-│   └── generate_techpaper.py    # Generate techpaper.pdf
+│  
 │
 ├── experiment/
 │   ├── runner.py                # Study orchestration (sequential conditions x reps x rounds)
